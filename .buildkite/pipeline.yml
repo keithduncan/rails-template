@@ -1,0 +1,11 @@
+agents:
+  queue: kaixia
+  task-definition: rails
+
+steps:
+  - command:
+      - bundle install --local --path vendor/bundler
+      - rake db:create db:setup test RAILS_ENV=test
+    label: ":rails:"
+    env:
+      RUBYOPT: "-W:no-deprecated -W:no-experimental"
